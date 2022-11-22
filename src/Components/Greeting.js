@@ -4,7 +4,7 @@ import { fetchGreeting } from '../Redux/greetingSlice';
 
 const Greeting = () => {
   const dispatch = useDispatch();
-  const greeting = useSelector((state) => state.greeting.value);
+  const greeting = useSelector((state) => state.greeting);
 
   useEffect(() => {
     dispatch(fetchGreeting());
@@ -13,11 +13,11 @@ const Greeting = () => {
   return (
     <div className="greeting_div">
       <h1 className="heading">Refresh the page to view the same greeting in different languages</h1>
-      {/* <ul className="list">
+      <ul className="list">
         {greeting.map((greeting) => (
           <li className="list_item" key={greeting.id}>{greeting.greeting}</li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   )
 }
