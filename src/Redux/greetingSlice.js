@@ -1,32 +1,25 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import axios from "axios"
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const BASE_URL = "http://localhost:3000/api/v1/greetings"
+const BASE_URL = 'http://localhost:3000/api/v1/greetings';
 
 export const fetchGreeting = createAsyncThunk(
-  "greeting/fetchGreeting",
+  'greeting/fetchGreeting',
   async () => {
-    const response = await axios.get(BASE_URL)
-    return response.data
-  }
-)
+    const response = await axios.get(BASE_URL);
+    return response.data;
+  },
+);
 
 const greetingReducer = createSlice({
-  name: "greeting",
+  name: 'greeting',
   initialState: [],
-  reducers: {
-    addGreeting: (state, action) => {
-      state.push(action.payload)
-    }
-  },
+  reducers: {},
   extraReducers: {
     [fetchGreeting.fulfilled]: (state, action) => {
-      state.status = "succeeded"
-      state.value = action.payload
-    }
-  }
-})
-
-export const { addGreeting } = greetingReducer.actions
+      state.push(action.payload);
+    },
+  },
+});
 
 export default greetingReducer.reducer;

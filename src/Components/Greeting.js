@@ -19,7 +19,7 @@ const Greeting = () => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Greeting;
